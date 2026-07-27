@@ -1,0 +1,192 @@
+:host {
+  display: block;
+  background: #F5F5F3;
+  color: #111111;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.75rem 2.5rem;
+}
+
+.site-header__logo { height: 22px; width: auto; display: block; }
+
+/* ---- Sezione 1: HOME ---- */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 2rem 2.5rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.hero__content { flex: 1; max-width: 50%; }
+
+.hero__label {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  color: #888888;
+  margin: 0 0 2rem;
+  padding-left: 0.12em;      /* allinea alla "I" del titolo */
+}
+
+.hero__title {
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* ---- Elenco servizi ---- */
+.services {
+  position: absolute;
+  top: 0;
+  right: 5rem;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.services__list {
+  list-style: none;
+  margin: 0;
+  padding: 42vh 2rem;
+  max-height: 100vh;
+  overflow-y: auto;
+  text-align: right;
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 70%, transparent 100%);
+}
+
+.services__list::-webkit-scrollbar { display: none; }
+
+.services__item {
+  font-size: clamp(1.8rem, 3.4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: #888888;
+  white-space: nowrap;
+  cursor: pointer;
+  opacity: 0.7;
+  filter: blur(2.5px);
+  transform-origin: right center;
+  will-change: transform, color, opacity, filter;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.35s ease-out,
+    opacity 0.35s ease-out,
+    filter 0.35s ease-out;
+}
+
+.services__item:hover {
+  filter: blur(0);
+  color: #E05C00;
+  opacity: 1;
+  transform: scale(1.14);
+}
+
+.services__item:hover ~ .services__item {
+  transform: translateY(0.5em);
+}
+
+/* ---- Indicatore "scorri giù" ---- */
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: #888888;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  transition: color 0.25s ease;
+}
+
+.scroll-hint:hover { color: #E05C00; }
+
+.scroll-hint__arrow {
+  font-size: 1.1rem;
+  animation: bob 1.6s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(4px); }
+}
+
+/* ---- Sezione 2: CONTATTI ---- */
+.contact {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 2.5rem 2.5rem;
+  box-sizing: border-box;
+}
+
+.contact__label {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  color: #888888;
+  margin: 0 0 3rem;
+}
+
+.contact__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3.5rem 6rem;
+  flex: 1;
+  align-content: center;
+}
+
+.contact__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  text-decoration: none;
+  color: #111111;
+  transition: color 0.25s ease;
+}
+
+.contact__item:hover { color: #E05C00; }
+
+.contact__key {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: #888888;
+}
+
+.contact__value {
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.contact__footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 4rem;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: #888888;
+}
