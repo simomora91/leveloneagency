@@ -298,7 +298,7 @@ a { color: inherit; }
   min-height: 200px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   transition: background 0.18s ease;
 }
 

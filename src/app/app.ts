@@ -27,7 +27,7 @@ export class App implements OnInit, OnDestroy {
     { code: 'F02', name: 'Foto', copy: 'Still aziendali e still eventi che raccontano un momento senza bisogno di didascalie.' },
     { code: 'F03', name: 'Social', copy: 'Gestione editoriale e community: contenuti che generano conversazioni vere, non solo impression.' },
     { code: 'F04', name: 'Eventi', copy: 'Copertura completa di eventi aziendali e privati, dal prima al dopo — non solo scatti.' },
-    { code: 'F05', name: 'Branding', copy: 'Coerenza visiva su ogni contenuto, perché si riconosca chi sei anche senza il logo.' },
+    { code: 'F05', name: 'Siti Web', copy: 'Siti su misura che convertono i visitatori in clienti, veloci e semplici da gestire.' },
     { code: 'F06', name: 'Voice Over', copy: 'Speakeraggio e doppiaggio pubblicitario per dare al messaggio il tono giusto.' },
     { code: 'F07', name: 'Formazione', copy: 'Percorsi su voce, dizione, foto, video e social per chi vuole imparare a comunicare da solo.' },
     { code: 'F08', name: 'Strategia', copy: 'Consulenza e partnership con agenzie per costruire una presenza digitale che dura.' },
