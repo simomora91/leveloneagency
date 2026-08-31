@@ -1,53 +1,144 @@
-<header class="site-header">
-  <img class="site-header__logo" src="wordmark.png" alt="Level One" />
-  <nav class="site-header__nav"></nav>
+<header class="site-header" id="top">
+  <a class="site-header__brand" href="#top">
+    <svg class="site-header__icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g class="site-header__icon-mark">
+        <rect x="0" y="0" width="9" height="48" rx="1.5" />
+        <rect x="0" y="39" width="20" height="9" rx="1.5" />
+        <rect x="39" y="0" width="9" height="48" rx="1.5" />
+        <rect x="28" y="39" width="20" height="9" rx="1.5" />
+        <polygon points="36,0 43.6,0 43.6,13 30,13" />
+      </g>
+      <circle class="site-header__icon-dot" cx="24" cy="24" r="6.5" />
+    </svg>
+    <img class="site-header__logo" src="wordmark.png" alt="Level One" />
+  </a>
+  <nav class="site-header__nav">
+    <a href="#servizi">Servizi</a>
+    <a href="#chi-siamo">Chi siamo</a>
+    <a href="#clienti">Clienti</a>
+  </nav>
+  <a class="site-header__cta" href="#contatti">// scrivici</a>
 </header>
 
 <main class="hero">
-  <div class="hero__content">
-    <p class="hero__label">COMUNICAZIONE AUDIOVISIVA — LUGANO</p>
-    <h1 class="hero__title">
-      Il tuo brand al<br />
-      livello successivo
-    </h1>
+  <div class="viewfinder">
+    <span class="viewfinder__corner viewfinder__corner--tl"></span>
+    <span class="viewfinder__corner viewfinder__corner--tr"></span>
+    <span class="viewfinder__corner viewfinder__corner--bl"></span>
+    <span class="viewfinder__corner viewfinder__corner--br"></span>
+
+    <div class="viewfinder__top">
+      <span class="viewfinder__rec">
+        <span class="viewfinder__rec-dot"></span>REC
+      </span>
+      <span class="viewfinder__timecode">{{ timecode() }}</span>
+    </div>
+
+    <div class="hero__body">
+      <p class="hero__kicker">// comunicazione audiovisiva — Lugano, CH</p>
+      <h1 class="hero__title">Il tuo brand al livello successivo.</h1>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#contatti">Iniziamo un progetto</a>
+        <a class="btn btn--ghost" href="#servizi">Guarda i servizi</a>
+      </div>
+    </div>
+
+    <div class="viewfinder__bottom">
+      <span>Lugano — TICINO</span>
+    </div>
   </div>
 
-  <aside class="services">
-    <ul class="services__list" #list>
-      @for (word of words; track word) {
-        <li class="services__item">{{ word }}</li>
-      }
-    </ul>
-  </aside>
-
-  <a class="scroll-hint" href="#contatti" aria-label="Scorri ai contatti">
-    <span>CONTATTI</span>
+  <a class="scroll-hint" href="#servizi" aria-label="Scorri ai servizi">
+    <span>SERVIZI</span>
     <span class="scroll-hint__arrow">↓</span>
   </a>
 </main>
 
-<section class="contact" id="contatti">
-  <p class="contact__label">CONTATTI</p>
-  <div class="contact__grid">
-    <a class="contact__item"
-       href="https://maps.google.com/?q=Via+Boscioro+20,+6962+Lugano,+Svizzera"
-       target="_blank" rel="noopener">
-      <span class="contact__key">INDIRIZZO</span>
-      <span class="contact__value">Via Boscioro 20<br />6962 Lugano, Svizzera</span>
-    </a>
-    <a class="contact__item" href="mailto:info@leveloneagency.ch">
-      <span class="contact__key">EMAIL</span>
-      <span class="contact__value">info@leveloneagency.ch</span>
-    </a>
-    <a class="contact__item"
-       href="https://www.instagram.com/leveloneagency.ch/"
-       target="_blank" rel="noopener">
-      <span class="contact__key">INSTAGRAM</span>
-      <span class="contact__value">@leveloneagency.ch</span>
-    </a>
+<section class="services" id="servizi">
+  <div class="services__head">
+    <p class="kicker">// servizi</p>
+    <h2>Otto inquadrature, un solo obiettivo</h2>
+    <p class="services__lead">Ogni servizio è un fotogramma dello stesso racconto: il tuo.</p>
   </div>
-  <footer class="contact__footer">
-    <span>LUGANO — CH</span>
-    <span>leveloneagency.ch</span>
-  </footer>
+  <div class="filmstrip">
+    <div class="filmstrip__track">
+      @for (s of services; track s.code) {
+        <div class="filmstrip__frame">
+          <span class="filmstrip__num">{{ s.code }}</span>
+          <div>
+            <h3>{{ s.name }}</h3>
+            <p>{{ s.copy }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="promise">
+  <p class="kicker">// la promessa</p>
+  <p class="promise__text">Non consegniamo servizi, facciamo vivere un'esperienza.</p>
+</section>
+
+<section class="about" id="chi-siamo">
+  <div class="about__grid">
+    <div>
+      <p class="kicker">// chi siamo</p>
+      <h2>Ascoltiamo prima di accendere la camera.</h2>
+    </div>
+    <div class="about__copy">
+      <p>Level One nasce a Lugano da un'idea semplice: ogni persona e ogni brand ha già qualcosa da dire, spesso ha solo bisogno di qualcuno che lo aiuti a dirlo con chiarezza.</p>
+      <p>Lavoriamo fianco a fianco con imprenditori, professionisti e organizzazioni in Ticino, costruendo comunicazione che parte da chi sei davvero, non da un template.</p>
+    </div>
+  </div>
+</section>
+
+<section class="clients" id="clienti">
+  <div class="clients__head">
+    <p class="kicker">// hanno lavorato con noi</p>
+    <h2>Chi ci ha già dato fiducia</h2>
+  </div>
+  <div class="clients__sheet">
+    @for (c of clients; track c.name) {
+      <div class="clients__row">
+        <span class="clients__name">{{ c.name }}</span>
+        <span class="clients__tag">{{ c.tag }}</span>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="contact" id="contatti">
+  <div class="contact__inner">
+    <div class="contact__grid">
+      <div class="contact__lead">
+        <p class="contact__label">// parliamone</p>
+        <h2 class="contact__title">Il prossimo progetto inizia con una consulenza gratuita.</h2>
+        <p class="contact__intro">Raccontaci la tua storia e noi ti diciamo come possiamo aiutarti.</p>
+        <a class="btn btn--contact" href="mailto:info@leveloneagency.ch">Scrivi a info&#64;leveloneagency.ch</a>
+      </div>
+      <div class="contact__fields">
+        <a class="contact__field"
+           href="https://maps.google.com/?q=Via+Boscioro+20,+6962+Lugano,+Svizzera"
+           target="_blank" rel="noopener">
+          <span class="contact__key">SEDE</span>
+          <span class="contact__value">Via Boscioro 20, 6962 Lugano</span>
+        </a>
+        <a class="contact__field" href="mailto:info@leveloneagency.ch">
+          <span class="contact__key">EMAIL</span>
+          <span class="contact__value">info&#64;leveloneagency.ch</span>
+        </a>
+        <a class="contact__field"
+           href="https://www.instagram.com/leveloneagency.ch/"
+           target="_blank" rel="noopener">
+          <span class="contact__key">INSTAGRAM</span>
+          <span class="contact__value">&#64;leveloneagency.ch</span>
+        </a>
+      </div>
+    </div>
+    <footer class="contact__footer">
+      <span>LUGANO — CH</span>
+      <span>leveloneagency.ch</span>
+    </footer>
+  </div>
 </section>
