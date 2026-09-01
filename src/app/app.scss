@@ -419,6 +419,15 @@ a { color: inherit; }
   transition: color 0.18s ease;
 }
 
+.clients__name--link {
+  text-decoration: none;
+}
+
+.clients__name--link:hover,
+.clients__name--link:focus-visible {
+  text-decoration: underline;
+}
+
 .clients__tag {
   font-family: $mono;
   font-size: 0.76rem;

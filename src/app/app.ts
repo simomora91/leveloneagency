@@ -9,6 +9,7 @@ interface ServiceFrame {
 interface Client {
   name: string;
   tag: string;
+  url?: string;
 }
 
 @Component({
@@ -34,12 +35,14 @@ export class App implements OnInit, OnDestroy {
   ];
 
   protected readonly clients: Client[] = [
-    { name: 'Tiba Ticino', tag: 'riscaldamento · impiantistica' },
-    { name: 'Arcademy', tag: 'counseling · no profit' },
-    { name: 'D&A Impianti Elettrici', tag: 'impiantistica' },
-    { name: 'Cornerstone Music Gear', tag: 'prodotti musicali' },
-    { name: 'Porte Aperte Italia', tag: 'no profit' },
-    { name: 'Roots Lugano', tag: 'food & beverage' },
+    { name: 'Tiba Ticino', tag: 'riscaldamento · impiantistica', url: 'https://tiba.ch/tessin/it/' },
+    { name: 'Arcademy', tag: 'counseling · no profit', url: 'https://www.arcademyonline.org' },
+    { name: 'D&A Impianti Elettrici', tag: 'impiantistica', url: 'https://www.deaimpiantielettricisrl.it' },
+    { name: 'Cornerstone Music Gear', tag: 'prodotti musicali', url: 'https://www.cornerstonemusicgear.com' },
+    { name: 'Porte Aperte Italia', tag: 'no profit', url: 'https://www.porteaperteitalia.org' },
+    { name: 'Roots Lugano', tag: 'food & beverage', url: 'https://rootslugano.ch' },
+    { name: 'Enos', tag: 'engineering & manufacturing', url: 'https://www.enositalia.com' },
+    { name: 'Pravernara', tag: 'no profit', url: 'https://www.pravernara.it' },
   ];
 
   private frame = 0;
