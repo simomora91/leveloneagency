@@ -1,5 +1,4 @@
-import { Component, OnInit, OnDestroy, signal } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { AfterViewInit, Component, ElementRef, OnInit, OnDestroy, signal } from '@angular/core';
 
 interface ServiceFrame {
   code: string;
@@ -19,7 +18,7 @@ interface Client {
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App implements OnInit, OnDestroy {
+export class App implements OnInit, AfterViewInit, OnDestroy {
   protected readonly title = signal('leveloneagency');
 
   protected readonly timecode = signal('00:00:00:00');
@@ -46,23 +45,11 @@ export class App implements OnInit, OnDestroy {
     { name: 'Pravernara', tag: 'no profit', url: 'https://www.pravernara.it' },
   ];
 
-  protected readonly hoveredClient = signal<string | null>(null);
-
-  private readonly previewUrls = new Map<string, SafeResourceUrl>();
-
   private frame = 0;
   private intervalId?: ReturnType<typeof setInterval>;
+  private revealObserver?: IntersectionObserver;
 
-  constructor(private readonly sanitizer: DomSanitizer) {}
-
-  protected previewUrl(url: string): SafeResourceUrl {
-    let safe = this.previewUrls.get(url);
-    if (!safe) {
-      safe = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-      this.previewUrls.set(url, safe);
-    }
-    return safe;
-  }
+  constructor(private readonly hostRef: ElementRef<HTMLElement>) {}
 
   ngOnInit(): void {
     const reducedMotion =
@@ -86,9 +73,37 @@ export class App implements OnInit, OnDestroy {
     }, 40);
   }
 
+  ngAfterViewInit(): void {
+    const reducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const targets = this.hostRef.nativeElement.querySelectorAll<HTMLElement>('.reveal');
+
+    if (reducedMotion || typeof IntersectionObserver === 'undefined') {
+      targets.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
+
+    this.revealObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            this.revealObserver?.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' },
+    );
+
+    targets.forEach((el) => this.revealObserver?.observe(el));
+  }
+
   ngOnDestroy(): void {
     if (this.intervalId) {
       clearInterval(this.intervalId);
     }
+    this.revealObserver?.disconnect();
   }
 }

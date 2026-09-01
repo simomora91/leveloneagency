@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

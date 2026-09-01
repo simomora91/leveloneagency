@@ -55,15 +55,15 @@
 </main>
 
 <section class="services" id="servizi">
-  <div class="services__head">
+  <div class="services__head reveal">
     <p class="kicker">// servizi</p>
     <h2>Otto inquadrature, un solo obiettivo</h2>
     <p class="services__lead">Ogni servizio è un fotogramma dello stesso racconto: il tuo.</p>
   </div>
   <div class="filmstrip">
     <div class="filmstrip__track">
-      @for (s of services; track s.code) {
-        <div class="filmstrip__frame">
+      @for (s of services; track s.code; let i = $index) {
+        <div class="filmstrip__frame reveal" [style.--reveal-delay.ms]="i * 60">
           <span class="filmstrip__num">{{ s.code }}</span>
           <div>
             <h3>{{ s.name }}</h3>
@@ -77,16 +77,16 @@
 
 <section class="promise">
   <p class="kicker">// la promessa</p>
-  <p class="promise__text">Non consegniamo servizi, facciamo vivere un'esperienza.</p>
+  <p class="promise__text reveal">Non consegniamo servizi, facciamo vivere un'esperienza.</p>
 </section>
 
 <section class="about" id="chi-siamo">
   <div class="about__grid">
-    <div>
+    <div class="reveal">
       <p class="kicker">// chi siamo</p>
       <h2>Ascoltiamo prima di accendere la camera.</h2>
     </div>
-    <div class="about__copy">
+    <div class="about__copy reveal">
       <p>Level One nasce a Lugano da un'idea semplice: ogni persona e ogni brand ha già qualcosa da dire, spesso ha solo bisogno di qualcuno che lo aiuti a dirlo con chiarezza.</p>
       <p>Lavoriamo fianco a fianco con imprenditori, professionisti e organizzazioni in Ticino, costruendo comunicazione che parte da chi sei davvero, non da un template.</p>
     </div>
@@ -94,28 +94,19 @@
 </section>
 
 <section class="clients" id="clienti">
-  <div class="clients__head">
+  <div class="clients__head reveal">
     <p class="kicker">// hanno lavorato con noi</p>
     <h2>Chi ci ha già dato fiducia</h2>
   </div>
-  <div class="clients__sheet">
+  <div class="clients__sheet reveal">
     @for (c of clients; track c.name) {
-      <div
-        class="clients__row"
-        (mouseenter)="c.url && hoveredClient.set(c.name)"
-        (mouseleave)="hoveredClient.set(null)"
-      >
+      <div class="clients__row">
         @if (c.url) {
           <a class="clients__name clients__name--link" [href]="c.url" target="_blank" rel="noopener">{{ c.name }}</a>
         } @else {
           <span class="clients__name">{{ c.name }}</span>
         }
         <span class="clients__tag">{{ c.tag }}</span>
-        @if (c.url && hoveredClient() === c.name) {
-          <div class="clients__preview">
-            <iframe [src]="previewUrl(c.url)" tabindex="-1" title="Anteprima {{ c.name }}"></iframe>
-          </div>
-        }
       </div>
     }
   </div>
@@ -124,13 +115,13 @@
 <section class="contact" id="contatti">
   <div class="contact__inner">
     <div class="contact__grid">
-      <div class="contact__lead">
+      <div class="contact__lead reveal">
         <p class="contact__label">// parliamone</p>
         <h2 class="contact__title">Il prossimo progetto inizia con una consulenza gratuita.</h2>
         <p class="contact__intro">Raccontaci la tua storia e noi ti diciamo come possiamo aiutarti.</p>
         <a class="btn btn--contact" href="mailto:info@leveloneagency.ch">Scrivi a info&#64;leveloneagency.ch</a>
       </div>
-      <div class="contact__fields">
+      <div class="contact__fields reveal">
         <a class="contact__field"
            href="https://maps.google.com/?q=Via+Boscioro+20,+6962+Lugano,+Svizzera"
            target="_blank" rel="noopener">
