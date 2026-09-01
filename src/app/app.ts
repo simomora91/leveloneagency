@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy, signal } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 interface ServiceFrame {
   code: string;
@@ -45,8 +46,23 @@ export class App implements OnInit, OnDestroy {
     { name: 'Pravernara', tag: 'no profit', url: 'https://www.pravernara.it' },
   ];
 
+  protected readonly hoveredClient = signal<string | null>(null);
+
+  private readonly previewUrls = new Map<string, SafeResourceUrl>();
+
   private frame = 0;
   private intervalId?: ReturnType<typeof setInterval>;
+
+  constructor(private readonly sanitizer: DomSanitizer) {}
+
+  protected previewUrl(url: string): SafeResourceUrl {
+    let safe = this.previewUrls.get(url);
+    if (!safe) {
+      safe = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+      this.previewUrls.set(url, safe);
+    }
+    return safe;
+  }
 
   ngOnInit(): void {
     const reducedMotion =

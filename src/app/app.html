@@ -100,13 +100,22 @@
   </div>
   <div class="clients__sheet">
     @for (c of clients; track c.name) {
-      <div class="clients__row">
+      <div
+        class="clients__row"
+        (mouseenter)="c.url && hoveredClient.set(c.name)"
+        (mouseleave)="hoveredClient.set(null)"
+      >
         @if (c.url) {
           <a class="clients__name clients__name--link" [href]="c.url" target="_blank" rel="noopener">{{ c.name }}</a>
         } @else {
           <span class="clients__name">{{ c.name }}</span>
         }
         <span class="clients__tag">{{ c.tag }}</span>
+        @if (c.url && hoveredClient() === c.name) {
+          <div class="clients__preview">
+            <iframe [src]="previewUrl(c.url)" tabindex="-1" title="Anteprima {{ c.name }}"></iframe>
+          </div>
+        }
       </div>
     }
   </div>
