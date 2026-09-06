@@ -442,6 +442,7 @@ a { color: inherit; }
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
   padding: 18px 26px;
   border-bottom: 1px solid rgba(17, 17, 17, 0.1);
   font-size: 1.05rem;
@@ -451,6 +452,27 @@ a { color: inherit; }
 .clients__row:last-child { border-bottom: none; }
 .clients__row:hover { background: rgba(224, 92, 0, 0.04); }
 .clients__row:hover .clients__name { color: $orange; transform: translateX(4px); }
+
+.clients__identity {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.clients__logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 96px;
+  height: 40px;
+}
+
+.clients__logo {
+  max-width: 100%;
+  max-height: 100%;
+}
 
 .clients__name {
   display: inline-block;
@@ -470,6 +492,22 @@ a { color: inherit; }
   font-family: $mono;
   font-size: 0.76rem;
   color: $grey;
+}
+
+@media (max-width: 640px) {
+  .clients__row {
+    flex-wrap: wrap;
+  }
+
+  .clients__logo-box {
+    width: 72px;
+    height: 32px;
+  }
+
+  .clients__tag {
+    flex: 1 0 100%;
+    text-align: right;
+  }
 }
 
 /* ---- Sezione 6: CONTATTI ---- */

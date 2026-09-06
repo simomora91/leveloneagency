@@ -10,6 +10,7 @@ interface Client {
   name: string;
   tag: string;
   url?: string;
+  logo: string;
 }
 
 @Component({
@@ -35,14 +36,14 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
   ];
 
   protected readonly clients: Client[] = [
-    { name: 'Tiba Ticino', tag: 'riscaldamento · impiantistica', url: 'https://tiba.ch/tessin/it/' },
-    { name: 'Arcademy', tag: 'counseling · no profit', url: 'https://www.arcademyonline.org' },
-    { name: 'D&A Impianti Elettrici', tag: 'impiantistica', url: 'https://www.deaimpiantielettricisrl.it' },
-    { name: 'Cornerstone Music Gear', tag: 'prodotti musicali', url: 'https://www.cornerstonemusicgear.com' },
-    { name: 'Porte Aperte Italia', tag: 'no profit', url: 'https://www.porteaperteitalia.org' },
-    { name: 'Roots Lugano', tag: 'food & beverage', url: 'https://rootslugano.ch' },
-    { name: 'Enos', tag: 'engineering & manufacturing', url: 'https://www.enositalia.com' },
-    { name: 'Pravernara', tag: 'no profit', url: 'https://www.pravernara.it' },
+    { name: 'Tiba Ticino', tag: 'riscaldamento · impiantistica', url: 'https://tiba.ch/tessin/it/', logo: 'clients/tiba-ticino.svg' },
+    { name: 'Arcademy', tag: 'counseling · no profit', url: 'https://www.arcademyonline.org', logo: 'clients/arcademy.png' },
+    { name: 'D&A Impianti Elettrici', tag: 'impiantistica', url: 'https://www.deaimpiantielettricisrl.it', logo: 'clients/da-impianti-elettrici.png' },
+    { name: 'Cornerstone Music Gear', tag: 'prodotti musicali', url: 'https://www.cornerstonemusicgear.com', logo: 'clients/cornerstone-music-gear.svg' },
+    { name: 'Porte Aperte Italia', tag: 'no profit', url: 'https://www.porteaperteitalia.org', logo: 'clients/porte-aperte-italia.png' },
+    { name: 'Roots Lugano', tag: 'food & beverage', url: 'https://rootslugano.ch', logo: 'clients/roots-lugano.png' },
+    { name: 'Enos', tag: 'engineering & manufacturing', url: 'https://www.enositalia.com', logo: 'clients/enos.png' },
+    { name: 'Pravernara', tag: 'no profit', url: 'https://www.pravernara.it', logo: 'clients/pravernara.svg' },
   ];
 
   private frame = 0;
