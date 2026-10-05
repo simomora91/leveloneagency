@@ -27,7 +27,7 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
   protected readonly services: ServiceFrame[] = [
     { code: 'F01', name: 'Video', copy: 'Produzioni corporate, eventi e contenuti social pensati per essere guardati fino alla fine.' },
     { code: 'F02', name: 'Foto', copy: 'Still aziendali e still eventi che raccontano un momento senza bisogno di didascalie.' },
-    { code: 'F03', name: 'Social', copy: 'Gestione editoriale e community: contenuti che generano conversazioni vere, non solo impression.' },
+    { code: 'F03', name: 'Social', copy: 'Realizziamo i contenuti per i tuoi canali social: video e foto pensati per ogni formato e pronti da pubblicare.' },
     { code: 'F04', name: 'Eventi', copy: 'Copertura completa di eventi aziendali e privati, dal prima al dopo — non solo scatti.' },
     { code: 'F05', name: 'Siti Web', copy: 'Siti su misura che convertono i visitatori in clienti, veloci e semplici da gestire.' },
     { code: 'F06', name: 'Voice Over', copy: 'Speakeraggio e doppiaggio pubblicitario per dare al messaggio il tono giusto.' },
