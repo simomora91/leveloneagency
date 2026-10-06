@@ -5,3 +5,29 @@
     scroll-behavior: smooth;
   }
 }
+
+/* Con il pallino arancione attivo (solo mouse) il cursore di sistema sparisce */
+html.has-cursor-dot,
+html.has-cursor-dot * {
+  cursor: none !important;
+}
+
+/* Touch: cerchio che si espande nel punto del tap */
+.tap-ripple {
+  position: fixed;
+  z-index: 1000;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 50%;
+  border: 1.5px solid #E05C00;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.55);
+  background: rgba(224, 92, 0, 0.18);
+  pointer-events: none;
+  animation: tap-ripple 0.5s ease-out forwards;
+}
+
+@keyframes tap-ripple {
+  from { transform: scale(0.5); opacity: 0.95; }
+  to { transform: scale(4.2); opacity: 0; }
+}

@@ -38,6 +38,43 @@ a { color: inherit; }
   transform: translateY(0);
 }
 
+/* ---- Cursore: pallino REC ---- */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  will-change: transform;
+}
+
+.cursor-dot.is-on { opacity: 1; }
+
+.cursor-dot span {
+  position: absolute;
+  top: -7px;
+  left: -7px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: $orange;
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.85);
+  transition: transform 0.22s ease, background 0.22s ease;
+}
+
+.cursor-dot.is-link span {
+  transform: scale(2.6);
+  background: rgba($orange, 0.28);
+  box-shadow: 0 0 0 0.6px $orange, 0 0 0 1.2px rgba(255, 255, 255, 0.85);
+}
+
+.cursor-dot.is-down span { transform: scale(0.7); }
+.cursor-dot.is-link.is-down span { transform: scale(2.1); }
+
 /* ---- Header ---- */
 .site-header {
   position: sticky;
@@ -265,6 +302,7 @@ a { color: inherit; }
   }
 
   .reveal,
+  .cursor-dot span,
   .filmstrip__frame,
   .clients__row,
   .clients__name {
