@@ -6,6 +6,12 @@ interface ServiceFrame {
   copy: string;
 }
 
+interface BackstageShot {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
 interface Client {
   name: string;
   tag: string;
@@ -45,6 +51,13 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
     { name: 'Ristocasa', tag: 'private dining · food', url: 'https://www.ristocasa.ch', logo: 'clients/ristocasa.png' },
     { name: 'Enos', tag: 'engineering & manufacturing', url: 'https://www.enositalia.com', logo: 'clients/enos.png' },
     { name: 'Pravernara', tag: 'no profit', url: 'https://www.pravernara.it', logo: 'clients/pravernara.svg' },
+  ];
+
+  protected readonly backstage: BackstageShot[] = [
+    { src: 'about/backstage-azienda.jpg', alt: 'Riprese video in azienda, con la camera a mano accanto a una vetrata', caption: 'riprese in azienda' },
+    { src: 'about/backstage-studio.jpg', alt: 'Shooting fotografico in studio, davanti a un softbox', caption: 'shooting in studio' },
+    { src: 'about/backstage-intervista.jpg', alt: 'Il team Level One visto di spalle durante le riprese di un\'intervista', caption: 'set intervista' },
+    { src: 'about/backstage-set.jpg', alt: 'Il team Level One sul set, con camera video e fotografica in mano', caption: 'sul set, in due' },
   ];
 
   private frame = 0;

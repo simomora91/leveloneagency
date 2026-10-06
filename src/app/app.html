@@ -91,6 +91,23 @@
       <p>Lavoriamo fianco a fianco con imprenditori, professionisti e organizzazioni in Ticino, costruendo comunicazione che parte da chi sei davvero, non da un template.</p>
     </div>
   </div>
+
+  <div class="backstage">
+    <p class="kicker reveal">// dietro le quinte</p>
+    <div class="backstage__strip">
+      @for (b of backstage; track b.src; let i = $index) {
+        <figure class="backstage__frame reveal" [style.--reveal-delay.ms]="i * 80">
+          <div class="backstage__photo">
+            <img [src]="b.src" [alt]="b.alt" width="900" height="1350" loading="lazy" decoding="async" />
+          </div>
+          <figcaption>
+            <span class="backstage__num">B0{{ i + 1 }}</span>
+            <span>{{ b.caption }}</span>
+          </figcaption>
+        </figure>
+      }
+    </div>
+  </div>
 </section>
 
 <section class="clients" id="clienti">
