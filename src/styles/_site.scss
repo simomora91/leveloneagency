@@ -365,7 +365,7 @@ a { color: inherit; }
 
 .filmstrip__frame:last-child { border-right: none; }
 .filmstrip__frame:hover {
-  background: rgba(224, 92, 0, 0.05);
+  background: rgba($orange, 0.05);
   transform: translateY(-3px);
 }
 
@@ -547,7 +547,7 @@ a { color: inherit; }
 }
 
 .clients__row:last-child { border-bottom: none; }
-.clients__row:hover { background: rgba(224, 92, 0, 0.04); }
+.clients__row:hover { background: rgba($orange, 0.04); }
 .clients__row:hover .clients__name { color: $orange; transform: translateX(4px); }
 
 .clients__identity {

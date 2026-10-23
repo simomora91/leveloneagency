@@ -36,7 +36,7 @@ import { POSTS } from './posts.generated';
               @if (ev.price) { <div><dt>Quota</dt><dd>{{ ev.price }}</dd></div> }
             </dl>
             @if (ev.ctaUrl) {
-              <a class="btn btn--primary post-event__cta" [href]="ev.ctaUrl">{{ ev.ctaLabel || 'Iscriviti' }}</a>
+              <a class="btn btn--primary post-event__cta" [href]="ev.ctaUrl" [attr.target]="ev.ctaUrl.startsWith('http') ? '_blank' : null" [attr.rel]="ev.ctaUrl.startsWith('http') ? 'noopener' : null">{{ ev.ctaLabel || 'Iscriviti' }}</a>
             }
           </aside>
         }

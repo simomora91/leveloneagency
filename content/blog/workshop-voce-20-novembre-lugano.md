@@ -7,8 +7,8 @@ eventDate: 2026-11-20
 eventTime: "dalle 19 alle 21"
 eventPlace: "Via Boscioro 20, Lugano"
 eventPrice: "CHF 40"
-eventCtaUrl: "mailto:info@leveloneagency.ch?subject=Iscrizione%20workshop%20voce%2020%20novembre"
-eventCtaLabel: "Iscriviti via email"
+eventCtaUrl: "https://productive-citron-bc7.notion.site/9b97dc5f589e4847a8f1970a8d459678"
+eventCtaLabel: "Iscriviti al workshop"
 ---
 
 La voce è il primo strumento con cui ti presenti: in una riunione, al telefono con un cliente, in un video per la tua azienda. Eppure è raro dedicarle del tempo.
@@ -32,4 +32,4 @@ Il workshop è condotto da chi usa la voce per lavoro, tra speakeraggio, voce na
 
 ## Come iscriversi
 
-Scrivi a [info@leveloneagency.ch](mailto:info@leveloneagency.ch?subject=Iscrizione%20workshop%20voce%2020%20novembre) con nome e cognome: ti rispondiamo con la conferma e le indicazioni per il pagamento, tramite TWINT o PayPal.
+Compila il [modulo di iscrizione](https://productive-citron-bc7.notion.site/9b97dc5f589e4847a8f1970a8d459678): ti rispondiamo con la conferma e le indicazioni per il pagamento, tramite TWINT o PayPal. Per qualsiasi domanda scrivici a [info@leveloneagency.ch](mailto:info@leveloneagency.ch).
