@@ -25,8 +25,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build -- --configuration production
-      - name: SPA fallback (404)
-        run: cp dist/leveloneagency/browser/index.html dist/leveloneagency/browser/404.html
+      - name: Pagina 404 (gli indirizzi sconosciuti caricano il sito, che mostra "pagina non trovata")
+        run: cp dist/leveloneagency/browser/index.csr.html dist/leveloneagency/browser/404.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist/leveloneagency/browser

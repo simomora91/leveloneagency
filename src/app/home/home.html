@@ -1,0 +1,127 @@
+<main class="hero">
+  <div class="viewfinder">
+    <span class="viewfinder__corner viewfinder__corner--tl"></span>
+    <span class="viewfinder__corner viewfinder__corner--tr"></span>
+    <span class="viewfinder__corner viewfinder__corner--bl"></span>
+    <span class="viewfinder__corner viewfinder__corner--br"></span>
+
+    <div class="viewfinder__top">
+      <span class="viewfinder__rec">
+        <span class="viewfinder__rec-dot"></span>REC
+      </span>
+      <span class="viewfinder__timecode">{{ timecode() }}</span>
+    </div>
+
+    <div class="hero__body">
+      <p class="hero__kicker">// comunicazione audiovisiva — Lugano, CH</p>
+      <h1 class="hero__title">Il tuo brand al livello successivo.</h1>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#contatti" (click)="goTo($event, 'contatti')">Iniziamo un progetto</a>
+        <a class="btn btn--ghost" routerLink="/" fragment="servizi">Guarda i servizi</a>
+      </div>
+    </div>
+
+    <div class="viewfinder__bottom">
+      <span>Lugano — TICINO</span>
+    </div>
+  </div>
+
+  <a class="scroll-hint" routerLink="/" fragment="servizi" aria-label="Scorri ai servizi">
+    <span>SERVIZI</span>
+    <span class="scroll-hint__arrow">↓</span>
+  </a>
+</main>
+
+<section class="services" id="servizi">
+  <div class="services__head reveal">
+    <p class="kicker">// servizi</p>
+    <h2>Otto inquadrature, un solo obiettivo</h2>
+    <p class="services__lead">Ogni servizio è un fotogramma dello stesso racconto: il tuo.</p>
+  </div>
+  <div class="filmstrip">
+    <div class="filmstrip__track">
+      @for (s of services; track s.code; let i = $index) {
+        <div class="filmstrip__frame reveal" [style.--reveal-delay.ms]="i * 60">
+          <span class="filmstrip__num">{{ s.code }}</span>
+          <div>
+            <h3>{{ s.name }}</h3>
+            <p>{{ s.copy }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="promise">
+  <p class="kicker">// la promessa</p>
+  <p class="promise__text reveal">Non consegniamo servizi, facciamo vivere un'esperienza.</p>
+</section>
+
+<section class="about" id="chi-siamo">
+  <div class="about__grid">
+    <div class="reveal">
+      <p class="kicker">// chi siamo</p>
+      <h2>Ascoltiamo prima di accendere la camera.</h2>
+    </div>
+    <div class="about__copy reveal">
+      <p>Level One nasce a Lugano da un'idea semplice: ogni persona e ogni brand ha già qualcosa da dire, spesso ha solo bisogno di qualcuno che lo aiuti a dirlo con chiarezza.</p>
+      <p>Lavoriamo fianco a fianco con imprenditori, professionisti e organizzazioni in Ticino, costruendo comunicazione che parte da chi sei davvero, non da un template.</p>
+    </div>
+  </div>
+
+  <div class="backstage">
+    <p class="kicker reveal">// dietro le quinte</p>
+    <div class="backstage__strip">
+      @for (b of backstage; track b.src; let i = $index) {
+        <figure class="backstage__frame reveal" [style.--reveal-delay.ms]="i * 80">
+          <div class="backstage__photo">
+            <img [src]="b.src" [alt]="b.alt" width="900" height="1350" loading="lazy" decoding="async" />
+          </div>
+          <figcaption>
+            <span class="backstage__num">B0{{ i + 1 }}</span>
+            <span>{{ b.caption }}</span>
+          </figcaption>
+        </figure>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="clients" id="clienti">
+  <div class="clients__head reveal">
+    <p class="kicker">// hanno lavorato con noi</p>
+    <h2>Chi ci ha già dato fiducia</h2>
+  </div>
+  <div class="clients__sheet reveal">
+    @for (c of clients; track c.name) {
+      <div class="clients__row">
+        <div class="clients__identity">
+          <span class="clients__logo-box">
+            <img class="clients__logo" [src]="c.logo" [alt]="c.name" loading="lazy" />
+          </span>
+          @if (c.url) {
+            <a class="clients__name clients__name--link" [href]="c.url" target="_blank" rel="noopener">{{ c.name }}</a>
+          } @else {
+            <span class="clients__name">{{ c.name }}</span>
+          }
+        </div>
+        <span class="clients__tag">{{ c.tag }}</span>
+      </div>
+    }
+  </div>
+</section>
+
+@if (latestPosts.length) {
+  <section class="blog-teaser" id="blog">
+    <div class="blog-teaser__head reveal">
+      <div>
+        <p class="kicker">dal blog</p>
+        <h2>Consigli, novità e appuntamenti</h2>
+      </div>
+      <a class="blog-teaser__all" routerLink="/blog">Tutti gli articoli →</a>
+    </div>
+    <app-post-list [posts]="latestPosts" />
+  </section>
+}
+

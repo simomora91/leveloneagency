@@ -1,4 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+/* Stili globali del sito: token di brand, sezioni della home e blog */
+@use 'styles/site';
+@use 'styles/blog';
 
 @media (prefers-reduced-motion: no-preference) {
   html {
