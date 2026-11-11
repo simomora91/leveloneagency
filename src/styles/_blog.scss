@@ -366,9 +366,146 @@
   .blog-teaser { padding-left: 1.5rem; padding-right: 1.5rem; }
 }
 
+// ---- Reel dai canali social, in fondo all'articolo ----
+.post-reels {
+  margin: 3.25rem 0 0;
+  padding-top: 2.25rem;
+  border-top: 1px solid rgba($ink, 0.12);
+}
+
+.post-reels__title {
+  margin: 0.6rem 0 1.6rem;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.post-reels__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reel {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.reel__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: $off;
+}
+
+// senza copertina la scheda resta tipografica, su fondo scuro
+.reel__media--plain { background: $ink; }
+
+.reel__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.reel:hover .reel__media img,
+.reel:focus-visible .reel__media img { transform: scale(1.04); }
+
+.reel__media::after {
+  content: '';
+  position: absolute;
+  inset: 40% 0 0;
+  background: linear-gradient(to bottom, rgba($ink, 0) 0%, rgba($ink, 0.85) 100%);
+}
+
+.reel__media--plain::after { inset: 0; background: none; }
+
+.reel__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  margin: -23px 0 0 -23px;
+  border-radius: 50%;
+  background: rgba($white, 0.92);
+  transition: transform 0.25s ease;
+}
+
+.reel__play::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -8px 0 0 -5px;
+  border-style: solid;
+  border-width: 8px 0 8px 13px;
+  border-color: transparent transparent transparent $orange;
+}
+
+.reel:hover .reel__play,
+.reel:focus-visible .reel__play { transform: scale(1.12); }
+
+.reel__text {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 2;
+  color: $white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+.reel:focus-visible .reel__media { outline: 2px solid $orange; outline-offset: 3px; }
+
+@media (max-width: 620px) {
+  .post-reels__grid {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    margin-inline: -1.5rem;
+    padding-inline: 1.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .post-reels__grid::-webkit-scrollbar { display: none; }
+
+  .post-reels__grid > li {
+    flex: 0 0 64%;
+    scroll-snap-align: start;
+  }
+
+  .reel__text { font-size: 0.85rem; right: 0.8rem; bottom: 0.8rem; left: 0.8rem; }
+  .reel__play { width: 38px; height: 38px; margin: -19px 0 0 -19px; }
+  .reel__play::before { margin: -7px 0 0 -4px; border-width: 7px 0 7px 11px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .post-row__dot,
   .post-event__dot { animation: none; }
 
   .post-row__link:hover .post-row__arrow { transform: none; }
+
+  .reel__media img,
+  .reel__play { transition: none; }
+
+  .reel:hover .reel__media img,
+  .reel:hover .reel__play { transform: none; }
 }

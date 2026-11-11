@@ -9,6 +9,10 @@ eventPlace: "Via Boscioro 20, Lugano"
 eventPrice: "CHF 40"
 eventCtaUrl: "https://productive-citron-bc7.notion.site/9b97dc5f589e4847a8f1970a8d459678"
 eventCtaLabel: "Iscriviti al workshop"
+reelsTitle: "Un assaggio, prima di decidere"
+reel: Nessuno dice «il pianoforte o ce l'hai o non ce l'hai» | https://www.instagram.com/reel/DfRugLDuog4/
+reel: Ho letto una frase come mi veniva. Gabriele mi ha fermato dopo tre secondi | https://www.instagram.com/reel/DfZcxC-yGNg/
+reel: La voce è uno strumento. Il 20 novembre lo alleniamo insieme | https://www.instagram.com/reel/DfhMZNbOG8R/
 ---
 
 La voce è il primo strumento con cui ti presenti: in una riunione, al telefono con un cliente, in un video per la tua azienda. Eppure è raro dedicarle del tempo.
