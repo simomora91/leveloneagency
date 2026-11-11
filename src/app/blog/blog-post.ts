@@ -48,6 +48,28 @@ import { POSTS } from './posts.generated';
         }
 
         <div class="post__body" [innerHTML]="p.html"></div>
+
+        @if (p.reels; as reels) {
+          <section class="post-reels" aria-label="Video dai nostri canali">
+            <p class="kicker">dai nostri canali</p>
+            <h2 class="post-reels__title">{{ p.reelsTitle }}</h2>
+            <ul class="post-reels__grid">
+              @for (r of reels; track r.url) {
+                <li>
+                  <a class="reel" [href]="r.url" target="_blank" rel="noopener">
+                    <span class="reel__media" [class.reel__media--plain]="!r.image">
+                      @if (r.image) {
+                        <img [src]="r.image" [alt]="r.alt || ''" loading="lazy" decoding="async" />
+                      }
+                      <span class="reel__play" aria-hidden="true"></span>
+                      <span class="reel__text">{{ r.text }}</span>
+                    </span>
+                  </a>
+                </li>
+              }
+            </ul>
+          </section>
+        }
       </article>
 
       @if (others().length) {

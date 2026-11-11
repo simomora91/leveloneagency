@@ -22,6 +22,16 @@ export interface PostEvent {
   ctaLabel?: string;
 }
 
+export interface PostReel {
+  /** Frase che invoglia ad aprirlo */
+  text: string;
+  /** Indirizzo pubblico del video */
+  url: string;
+  /** Copertina opzionale: senza, la scheda resta tipografica */
+  image?: string;
+  alt?: string;
+}
+
 export interface Post {
   slug: string;
   title: string;
@@ -33,5 +43,7 @@ export interface Post {
   cover?: string;
   coverAlt?: string;
   event?: PostEvent;
+  reelsTitle?: string;
+  reels?: PostReel[];
   html: string;
 }

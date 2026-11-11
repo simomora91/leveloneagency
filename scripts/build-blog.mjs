@@ -30,6 +30,7 @@ function parseFile(file, raw) {
   const m = /^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/.exec(raw);
   if (!m) fail(file, 'manca l\'intestazione tra le righe ---');
   const meta = {};
+  const reels = [];
   for (const line of m[1].split(/\r?\n/)) {
     if (!line.trim() || line.trim().startsWith('#')) continue;
     const i = line.indexOf(':');
@@ -37,9 +38,11 @@ function parseFile(file, raw) {
     const key = line.slice(0, i).trim();
     let value = line.slice(i + 1).trim();
     if (/^(".*"|'.*')$/.test(value)) value = value.slice(1, -1);
-    meta[key] = value;
+    // "reel" si puo' ripetere: una riga per ogni video
+    if (key === 'reel') reels.push(value);
+    else meta[key] = value;
   }
-  return { meta, body: m[2] };
+  return { meta, reels, body: m[2] };
 }
 
 const files = readdirSync(contentDir).filter((f) => f.endsWith('.md') && !f.startsWith('_')).sort();
@@ -48,7 +51,7 @@ const posts = [];
 for (const file of files) {
   const slug = file.replace(/\.md$/, '');
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug)) fail(file, 'il nome del file deve essere minuscolo, con trattini e senza accenti');
-  const { meta, body } = parseFile(file, readFileSync(join(contentDir, file), 'utf8'));
+  const { meta, reels, body } = parseFile(file, readFileSync(join(contentDir, file), 'utf8'));
   if (meta.draft === 'true') continue;
 
   for (const key of ['title', 'description', 'date', 'category']) {
@@ -71,6 +74,15 @@ for (const file of files) {
   if (meta.cover) {
     post.cover = meta.cover;
     post.coverAlt = meta.coverAlt ?? '';
+  }
+  if (reels.length) {
+    post.reelsTitle = meta.reelsTitle || 'Un assaggio';
+    post.reels = reels.map((raw) => {
+      const [text, url, image, alt] = raw.split('|').map((x) => x.trim());
+      if (!text || !url) fail(file, 'riga "reel": serve almeno "testo | indirizzo"');
+      if (!/^https?:\/\//.test(url)) fail(file, `riga "reel": "${url}" non e' un indirizzo valido`);
+      return { text, url, ...(image && { image }), ...(alt && { alt }) };
+    });
   }
   if (meta.eventDate) {
     post.event = {
